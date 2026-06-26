@@ -10,10 +10,14 @@ const orderRoutes = require('./routes/orders');
 
 const app = express();
 
+// NEW - paste this
 app.use(cors({
-  origin: process.env.FRONTEND_URL || '*',
-  credentials: true
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: false
 }));
+app.options('*', cors());
 app.use(express.json());
 
 // Routes
